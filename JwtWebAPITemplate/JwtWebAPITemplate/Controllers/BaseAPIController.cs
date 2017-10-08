@@ -1,25 +1,27 @@
 ﻿using JwtWebAPITemplate.AuthorizationModels;
+using JwtWebAPITemplate.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace JwtWebAPITemplate.Controllers
 {
     public class BaseApiController : ApiController
     {
-            private ModelFactory _modelFactory;
+            private OutputFactory _outputFactory;
             private ApplicationUserManager _AppUserManager = null;
 
             protected ApplicationUserManager AppUserManager
             {
                 get
                 {
-                    return _AppUserManager ?? HttpContext.Current.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                    return _AppUserManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 }
             }
 
@@ -27,15 +29,15 @@ namespace JwtWebAPITemplate.Controllers
             {
             }
 
-            protected ModelFactory ApiOutputFactory
+            protected OutputFactory ApiOutputFactory
             {
                 get
                 {
-                    if (_modelFactory == null)
+                    if (_outputFactory == null)
                     {
-                        _modelFactory = new ModelFactory(this.Request, this.AppUserManager);
+                        _outputFactory = new OutputFactory(this.Request, this.AppUserManager);
                     }
-                    return _modelFactory;
+                    return _outputFactory;
                 }
             }
 
