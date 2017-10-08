@@ -13,8 +13,10 @@ namespace JwtWebAPITemplate.App_Start
 
         public void Configuration(IAppBuilder app)
         {
-            HttpConfiguration httpConfig = new HttpConfiguration();
 
+            HttpConfiguration httpConfig = new HttpConfiguration();
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
             ConfigureOAuthTokenGeneration(app);
 
             ConfigureWebApi(httpConfig);
@@ -23,8 +25,6 @@ namespace JwtWebAPITemplate.App_Start
 
             app.UseWebApi(httpConfig);
 
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
         }
 
         private void ConfigureOAuthTokenGeneration(IAppBuilder app)

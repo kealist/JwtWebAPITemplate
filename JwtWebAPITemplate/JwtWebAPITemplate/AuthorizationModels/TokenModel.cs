@@ -20,7 +20,7 @@ namespace JwtWebAPITemplate.AuthorizationModels
             return Jose.JWT.Encode(claims, secret, JwsAlgorithm.HS256);
         }
 
-        public ApplicationUser VerifyToken(ApplicationUserManager userManager, byte[] secret, string jwt)
+        public ApplicationUser Verify(ApplicationUserManager userManager, byte[] secret, string jwt)
         {
             try
             {

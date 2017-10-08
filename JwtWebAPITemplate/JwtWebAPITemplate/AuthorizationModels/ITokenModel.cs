@@ -8,6 +8,6 @@ namespace JwtWebAPITemplate.AuthorizationModels
     interface ITokenModel
     {
         string Generate(byte[] secret, Dictionary<string,Object> claims);
-        ApplicationUser VerifyToken(ApplicationUserManager userManager, byte[] secret, string jwt);
+        ApplicationUser Verify(ApplicationUserManager userManager, byte[] secret, string jwt);
     }
 }
