@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace JwtWebAPITemplate.Controllers
 {
-    public class TokenController : ApiController
+    public class TokenController : BaseApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()
@@ -24,6 +24,7 @@ namespace JwtWebAPITemplate.Controllers
         // POST api/<controller>
         public void Post([FromBody]string value)
         {
+
         }
 
         // PUT api/<controller>/5
