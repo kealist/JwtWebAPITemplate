@@ -7,7 +7,7 @@ namespace JwtWebAPITemplate.AuthorizationModels
 {
     public class TokenModel : ITokenModel
     {
-        public string Generate(byte[] secret, Dictionary<string, string> claims)
+        public string Generate(byte[] secret, Dictionary<string, Object> claims)
         {
             throw new NotImplementedException();
         }

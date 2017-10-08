@@ -12,7 +12,7 @@ namespace JwtWebAPITemplate.DataAccess
     {
 
         public ApplicationDbContext()
-            : base("DBContext")
+            : base("defaultConnection")
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
